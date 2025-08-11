@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestor de Recetas PWA</title>
+  <script type="module" src="./src/components/header-component.js"></script>
+  <script type="module" src="./src/components/espe-product-card.js"></script>
+  <script type="module" src="./src/components/espe-footer.js"></script>
+  <script defer src="./src/app.js"></script>
+  <link rel="stylesheet" href="./src/css/app.css" />
+</head>
+<body>
+  <header-component></header-component>
+
+  <main>
+    <section id="recetas-container" class="recetas-grid"></section>
+  </main>
+
+    <espe-footer
+      logoSrc="./src/assets/E-ESPE.png"
+      addresses='["Av. Quevedo Km. 24 - Parroquia Luz de America","Sede Matriz Sangolqui","Sede Latacunga","Santo Domingo - Ecuador"]'
+      contacts='["Telefono: +593 2 123 4567","Email: contacto@espe.edu.ec"]'
+      paymentLogos='["./src/assets/visa.png","./src/assets/mastercard.png","./src/assets/paypal.png","./src/assets/american.png"]'
+    >
+    </espe-footer>
+</body>
+</html>

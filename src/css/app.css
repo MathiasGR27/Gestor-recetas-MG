@@ -1,0 +1,26 @@
+html, body {
+  height: 100%; /* Ocupa toda la altura de la ventana */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column; /* Acomoda en columna */
+  min-height: 100vh; /* Altura mínima igual a la ventana */
+}
+
+main {
+  flex: 1; /* Hace que el main empuje el footer hacia abajo */
+  padding: 20px 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.recetas-grid {
+  display: flex;
+  flex-wrap: wrap;  /* para que si no caben, bajen a la siguiente fila */
+  justify-content: center; /* centra las cards en fila */
+  gap: 16px; /* espacio entre cards */
+  padding: 10px;
+}
