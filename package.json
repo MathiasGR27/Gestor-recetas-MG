@@ -1,0 +1,24 @@
+{
+  "name": "gestor-recetas-mg",
+  "version": "1.0.0",
+  "main": "index.js",
+ "scripts": {
+    "start": "http-server -c-1 ."
+  },
+  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MathiasGR27/Gestor-recetas-MG.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "bugs": {
+    "url": "https://github.com/MathiasGR27/Gestor-recetas-MG/issues"
+  },
+  "homepage": "https://github.com/MathiasGR27/Gestor-recetas-MG#readme",
+  "description": ""
+}
