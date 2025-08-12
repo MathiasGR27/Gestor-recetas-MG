@@ -64,18 +64,20 @@ main {
   z-index: 1001;
   position: fixed;
   width: 100%;
-  height: calc(100vh - 56px);
+  height: 100vh;       /* ocupa toda la altura de la ventana */
   overflow-y: auto;
-  top: 56px; /* altura del header */
+  top: 0;              /* empieza desde arriba */
   left: 0;
   background: white;
   text-align: center;
   transform: translateY(100vh);
   transition: transform 0.5s ease;
+  display: flex;       /* para usar flexbox */
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 
 /* Modal abierto */
 #modal-post-section.open {
