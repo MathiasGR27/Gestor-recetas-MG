@@ -25,11 +25,10 @@ export class EspeFooter extends LitElement {
       }
 
       .logo {
-        width: 90%;
+        width: 25%;  
         height: auto;
         filter: var(--footer-logo-filter, none);
       }
-
       .footer-column {
         flex: 1;
         min-width: 200px;
@@ -91,6 +90,11 @@ export class EspeFooter extends LitElement {
           flex-direction: column;
           align-items: flex-start;
           gap: 1rem;
+        }
+      }
+      @media (max-width: 768px) {
+        :host {
+          display: none;
         }
       }
     `;

@@ -3,7 +3,7 @@
     "title": "Tarta de Manzana",
     "description": "Deliciosa tarta de manzana con masa casera.",
     "imageUrl": "./src/images/tartamanzana.jpeg",
-    "price": "5.00$",
+    "price": "",
     "status": "Disponible",
     "buttonTheme": "green"
   },
@@ -11,7 +11,7 @@
     "title": "Encebollado",
     "description": "Delicioso encebollado de pescado con yuca.",
     "imageUrl": "./src/images/encebollado.jpeg",
-    "price": "2.50$",
+    "price": "",
     "status": "Disponible",
     "buttonTheme": "green"
   },
@@ -19,7 +19,7 @@
     "title": "Tarta de Manzana",
     "description": "Deliciosa tarta de manzana con masa casera.",
     "imageUrl": "./src/images/tartamanzana.jpeg",
-    "price": "5.00$",
+    "price": "",
     "status": "Disponible",
     "buttonTheme": "green"
   },
@@ -27,7 +27,7 @@
     "title": "Encebollado",
     "description": "Delicioso encebollado de pescado con yuca.",
     "imageUrl": "./src/images/encebollado.jpeg",
-    "price": "2.50$",
+    "price": "",
     "status": "Disponible",
     "buttonTheme": "green"
   }

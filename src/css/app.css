@@ -1,26 +1,139 @@
+:root {
+  /* Colores oficiales Universidad de las Fuerzas Armadas ESPE */
+  --primary: #003366;
+  --dark-primary: #001a33;
+  --light-primary: #1a4d80;
+  --secondary: #ffd700;
+  --dark-secondary: #b8860b;
+  --light-secondary: #ffec8b;
+  --accent: #cc0000;
+  --gray: #666666;
+  --light-gray: #f5f5f5;
+  --dark-gray: #333333;
+  --error: #cc0000;
+  --success: #006600;
+  --warning: #ff8c00;
+  --white: #fff;
+  --black: #000;
+  --height: calc(100vh - 56px);
+  --width: 100%;
+  --fontFamily: "Roboto";
+}
+
+/* --- Reset y Layout base --- */
 html, body {
   height: 100%; /* Ocupa toda la altura de la ventana */
   margin: 0;
   padding: 0;
+  font-family: var(--fontFamily), sans-serif;
 }
 
 body {
   display: flex;
-  flex-direction: column; /* Acomoda en columna */
-  min-height: 100vh; /* Altura mínima igual a la ventana */
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
-  flex: 1; /* Hace que el main empuje el footer hacia abajo */
+  flex: 1;
   padding: 20px 10px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Grid para recetas */
 .recetas-grid {
   display: flex;
-  flex-wrap: wrap;  /* para que si no caben, bajen a la siguiente fila */
-  justify-content: center; /* centra las cards en fila */
-  gap: 16px; /* espacio entre cards */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
   padding: 10px;
+}
+
+/* --- Modal y botón flotante --- */
+
+.floating-button {
+  z-index: 1000;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+/* Modal cerrado por defecto */
+#modal-post-section {
+  z-index: 1001;
+  position: fixed;
+  width: 100%;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+  top: 56px; /* altura del header */
+  left: 0;
+  background: white;
+  text-align: center;
+  transform: translateY(100vh);
+  transition: transform 0.5s ease;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal abierto */
+#modal-post-section.open {
+  display: flex;
+  transform: translateY(0);
+}
+
+.floating-button {
+  position: fixed;
+  bottom: 30px;  /* Distancia desde abajo, ajustable */
+  right: 30px;   /* Distancia desde la derecha */
+  z-index: 1500; /* Siempre encima */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Tamaño fijo para el botón */
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  background-color: var(--light-primary);
+  transition: background-color 0.3s ease;
+}
+
+/* Hover para mejor feedback visual */
+.floating-button:hover button {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+/* Aseguramos el footer con menor z-index */
+espe-footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive: pantallas medianas y pequeñas */
+@media (max-width: 768px) {
+  .floating-button {
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+  }
+  .floating-button button {
+    font-size: 20px;
+  }
+}
+
+/* Responsive: pantallas muy pequeñas */
+@media (max-width: 400px) {
+  .floating-button {
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+  .floating-button button {
+    font-size: 18px;
+  }
 }
