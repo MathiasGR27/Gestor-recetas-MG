@@ -43,6 +43,8 @@ src/
 ├── index.html          # Página principal
 ├── manifest.webmanifest
 └── sw.js               # Service Worker
+```
+
 ---
 
 ## Instalación en dispositivos móviles
