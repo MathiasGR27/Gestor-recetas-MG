@@ -494,7 +494,7 @@ class HeaderComponent extends LitElement {
       <header class="header-top">
         <div class="top-row">
           <button class="menu-button" @click="${this.toggleSidebar}" aria-label="Abrir menú">☰</button>
-          <div class="logo" @click="${() => window.location.replace('/')}">Gestor de Recetas</div>
+          <div class="logo" @click="${() => window.location.replace('./')}">Gestor de Recetas</div>
         </div>
         <div class="search-bar">
           <select>
