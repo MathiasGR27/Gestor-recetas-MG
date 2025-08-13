@@ -26,26 +26,22 @@ El objetivo principal de **EspeRecetas SD** es proporcionar a los usuarios una f
 
 ## Estructura del proyecto
 src/
-├── components/ # Componentes Web personalizados
-│ ├── espe-footer.js
-│ ├── espe-product-card.js
-│ └── header-component.js
-├── css/ # Estilos
-│ └── app.css
-├── data/ # Datos de recetas
-│ └── recetas.json
-├── images/ # Imágenes de recetas
-│ ├── encebollado.jpeg
-│ ├── tartamanzana.jpeg
-│ └── icons/ # Iconos para PWA
-├── app.js # Lógica principal
-├── index.html # Página principal
+├── components/         # Componentes Web personalizados
+│   ├── espe-footer.js
+│   ├── espe-product-card.js
+│   └── header-component.js
+├── css/                # Estilos
+│   └── app.css
+├── data/               # Datos de recetas
+│   └── recetas.json
+├── images/             # Imágenes de recetas
+│   ├── encebollado.jpeg
+│   ├── tartamanzana.jpeg
+│   └── icons/          # Iconos para PWA
+├── app.js              # Lógica principal
+├── index.html          # Página principal
 ├── manifest.webmanifest
-└── sw.js # Service Worker
-
-yaml
-Copiar
-Editar
+└── sw.js               # Service Worker
 
 ---
 
