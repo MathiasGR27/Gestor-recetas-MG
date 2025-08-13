@@ -6,7 +6,9 @@ class HeaderComponent extends LitElement {
     showLangMenu: { type: Boolean },
     showAccountMenu: { type: Boolean },
     showLangMenuDrawer: { type: Boolean },
-    showAccountMenuDrawer: { type: Boolean }
+    showAccountMenuDrawer: { type: Boolean },
+    deferredPrompt: { state: true },
+    showInstallButton: { state: true }
   };
 
   constructor() {
@@ -16,7 +18,11 @@ class HeaderComponent extends LitElement {
     this.showAccountMenu = false;
     this.showLangMenuDrawer = false;
     this.showAccountMenuDrawer = false;
+    this.deferredPrompt = null;
+    this.showInstallButton = false;
+
     this._onOutsideClick = this._onOutsideClick.bind(this);
+    this._onBeforeInstallPrompt = this._onBeforeInstallPrompt.bind(this);
   }
 
   _manejarProductoAnadido = () => {
@@ -38,13 +44,39 @@ class HeaderComponent extends LitElement {
     window.addEventListener('click', this._onOutsideClick);
     window.addEventListener('producto-anadido', this._manejarProductoAnadido);
     window.addEventListener('producto-removido', this._manejarProductoRemovido);
+
+    // Escuchar evento PWA beforeinstallprompt
+    window.addEventListener('beforeinstallprompt', this._onBeforeInstallPrompt);
   }
 
   disconnectedCallback() {
     window.removeEventListener('click', this._onOutsideClick);
     window.removeEventListener('producto-anadido', this._manejarProductoAnadido);
     window.removeEventListener('producto-removido', this._manejarProductoRemovido);
+
+    window.removeEventListener('beforeinstallprompt', this._onBeforeInstallPrompt);
+
     super.disconnectedCallback();
+  }
+
+  _onBeforeInstallPrompt(e) {
+    e.preventDefault();
+    this.deferredPrompt = e;
+    this.showInstallButton = true;
+  }
+
+  _handleInstallClick() {
+    if (!this.deferredPrompt) return;
+    this.deferredPrompt.prompt();
+    this.deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      this.deferredPrompt = null;
+      this.showInstallButton = false;
+    });
   }
 
   static styles = css`
@@ -160,6 +192,26 @@ class HeaderComponent extends LitElement {
       position: relative;
     }
 
+    /* Botón instalar en header */
+    .install-button {
+      cursor: pointer;
+      user-select: none;
+      padding: 8px 12px;
+      background: #febd69;
+      border-radius: 4px;
+      font-weight: bold;
+      color: #000;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: background-color 0.3s ease;
+    }
+
+    .install-button:hover {
+      background-color: #e0a84a;
+    }
+
     /* Dropdown common */
     .dropdown {
       position: absolute;
@@ -256,6 +308,9 @@ class HeaderComponent extends LitElement {
       font-weight: 600;
       cursor: pointer;
       user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .mdl-navigation__link:hover {
@@ -264,20 +319,19 @@ class HeaderComponent extends LitElement {
 
     /* User actions dentro del drawer */
     .drawer-user-actions {
-  position: sticky;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  border-top: 1px solid #ccc;
-  padding: 1rem 20px;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  box-sizing: border-box;
-  z-index: 1200;
-}
-
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      border-top: 1px solid #ccc;
+      padding: 1rem 20px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-sizing: border-box;
+      z-index: 1200;
+    }
 
     /* Dropdown en drawer: desplegar vertical hacia abajo */
     .drawer-user-actions .dropdown {
@@ -482,6 +536,17 @@ class HeaderComponent extends LitElement {
                 </div>`
               : ''}
           </div>
+
+          ${this.showInstallButton
+            ? html`<div
+                class="install-button"
+                @click="${this._handleInstallClick}"
+                title="Instalar la App"
+              >
+                📲 Instalar App
+              </div>`
+            : ''}
+
           <espe-boton-carrito></espe-boton-carrito>
         </div>
       </header>
@@ -495,6 +560,15 @@ class HeaderComponent extends LitElement {
           <a class="mdl-navigation__link" href="#">Link 2</a>
           <a class="mdl-navigation__link" href="#">Link 3</a>
           <a class="mdl-navigation__link" href="#">Link 4</a>
+
+          ${this.showInstallButton
+            ? html`<div
+                class="mdl-navigation__link app--install"
+                @click="${this._handleInstallClick}"
+              >
+                📲 Instalar App
+              </div>`
+            : ''}
         </nav>
 
         <div class="user-actions drawer-user-actions">

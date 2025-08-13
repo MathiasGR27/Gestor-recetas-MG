@@ -2,7 +2,7 @@
   "lang": "es",
   "short_name": "EspeRecetas",
   "name": "EspeRecetas SD",
-  "description": "Aplicacion que permite gestionar recetas de forma sencilla y rapida",
+  "description": "Aplicacion que permite ver recetas de forma sencilla y rapida",
   "background_color": "#1a4d80",
   "theme_color": "#1a4d80",
   "orientation": "portrait",
@@ -10,20 +10,20 @@
   "start_url": ".",
   "scope": ".",
   "icons": [{
-      "src": "src/images/icons/icon-144x144.png",
+      "src": "src/images/icons/144x144.png",
       "sizes": "144x144",
       "type": "image/png"
     }, {
-      "src": "src/images/icons/icon-192x192.png",
+      "src": "src/images/icons/192x192.png",
       "sizes": "192x192"
     }, {
-      "src": "src/images/icons/icon-256x256.png",
+      "src": "src/images/icons/256x256.png",
       "sizes": "256x256"
-    } ,{
-      "src": "src/images/icons/icon-384x384.png",
+    }, {
+      "src": "src/images/icons/384x384.png",
       "sizes": "384x384"
     }, {
-        "src": "src/images/icons/icon-512x512.png",
+        "src": "src/images/icons/512x512.png",
         "sizes": "512x512"
     }]
 }

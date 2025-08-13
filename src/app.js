@@ -5,6 +5,8 @@ let MAIN;
 let MODAL_POST;
 let BTN_SHOW_POST;
 let BTN_CANCEL_POST;
+let deferredPrompt = null;
+
 
 // Guardar recetas en localStorage
 function guardarRecetasLocal() {
@@ -72,6 +74,17 @@ const ClosePostModal = () => {
   }, 500);
 };
 
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault(); // Previene que el navegador muestre el prompt automáticamente
+  deferredPrompt = e; // Guardamos el evento para usarlo luego
+
+  // Mostramos el botón para instalar
+  const bannerInstall = document.querySelector('#banner-install');
+  if (bannerInstall) {
+    bannerInstall.style.display = 'block';
+  }
+});
+
 // Al cargar el DOM
 window.addEventListener("load", async () => {
   MAIN = document.querySelector("main");
@@ -81,6 +94,24 @@ window.addEventListener("load", async () => {
 
   BTN_SHOW_POST.addEventListener("click", ShowModalPost);
   BTN_CANCEL_POST.addEventListener("click", ClosePostModal);
+
+
+  const bannerInstall = document.querySelector('#banner-install');
+  if (bannerInstall) {
+    bannerInstall.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt(); // Muestra el prompt de instalación
+
+      const choiceResult = await deferredPrompt.userChoice;
+      if (choiceResult.outcome === 'accepted') {
+        console.log('Usuario aceptó instalar la app');
+      } else {
+        console.log('Usuario rechazó la instalación');
+      }
+      deferredPrompt = null; // Ya no podemos usar el prompt
+      bannerInstall.style.display = 'none'; // Ocultamos el botón después
+    });
+  }
 
   await cargarRecetas();
 
