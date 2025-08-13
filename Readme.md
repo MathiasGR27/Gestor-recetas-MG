@@ -25,6 +25,7 @@ El objetivo principal de **EspeRecetas SD** es proporcionar a los usuarios una f
 ---
 
 ## Estructura del proyecto
+```
 src/
 ├── components/         # Componentes Web personalizados
 │   ├── espe-footer.js
@@ -42,7 +43,6 @@ src/
 ├── index.html          # Página principal
 ├── manifest.webmanifest
 └── sw.js               # Service Worker
-
 ---
 
 ## Instalación en dispositivos móviles
