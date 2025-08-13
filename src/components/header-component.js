@@ -543,7 +543,7 @@ class HeaderComponent extends LitElement {
                 @click="${this._handleInstallClick}"
                 title="Instalar la App"
               >
-                📲 Instalar App
+                Instalar App
               </div>`
             : ''}
 
@@ -554,19 +554,17 @@ class HeaderComponent extends LitElement {
       <!-- Drawer sidebar -->
       <div class="overlay ${this.menuOpen ? 'show' : ''}" @click="${this.toggleSidebar}"></div>
       <nav class="sidebar-menu ${this.menuOpen ? 'show' : ''}" @click=${e => e.stopPropagation()}>
-        <span class="mdl-layout__drawer-title">Title</span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="#">Link 1</a>
-          <a class="mdl-navigation__link" href="#">Link 2</a>
-          <a class="mdl-navigation__link" href="#">Link 3</a>
-          <a class="mdl-navigation__link" href="#">Link 4</a>
-
+          <a class="mdl-navigation__link" href="">Inicio</a>
+          <a class="mdl-navigation__link" href="">Categorías</a>
+          <a class="mdl-navigation__link" href="">Mis Recetas</a>
+          <a class="mdl-navigation__link" href="">Favoritos</a>
           ${this.showInstallButton
             ? html`<div
                 class="mdl-navigation__link app--install"
                 @click="${this._handleInstallClick}"
               >
-                📲 Instalar App
+                Instalar App
               </div>`
             : ''}
         </nav>
