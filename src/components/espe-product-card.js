@@ -181,8 +181,8 @@ export class EspeProductCard extends LitElement {
       <div class="card">
         <div class="image-placeholder">
           ${this.imageUrl
-            ? html`<img src="${this.imageUrl}" alt="Imagen del producto" class="card-image" />`
-            : ''}
+        ? html`<img src="${this.imageUrl}" alt="Imagen del producto" class="card-image" />`
+        : ''}
           <div class="options-btn">⋮</div>
         </div>
         <div class="content">

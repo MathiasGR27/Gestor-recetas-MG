@@ -95,22 +95,22 @@ window.addEventListener("load", async () => {
   BTN_SHOW_POST.addEventListener("click", ShowModalPost);
   BTN_CANCEL_POST.addEventListener("click", ClosePostModal);
 
-
-  const bannerInstall = document.querySelector('#banner-install');
-  if (bannerInstall) {
-    bannerInstall.addEventListener('click', async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt(); // Muestra el prompt de instalación
-
-      const choiceResult = await deferredPrompt.userChoice;
-      if (choiceResult.outcome === 'accepted') {
-        console.log('Usuario aceptó instalar la app');
-      } else {
-        console.log('Usuario rechazó la instalación');
+   await Notification.requestPermission(); //Solicitar permiso para notificaciones
+   if (navigator.serviceWorker) {
+    const basePath = location.hostname === "localhost" ? "" : "/Gestor-recetas-MG";
+    try {
+      const res = await navigator.serviceWorker.register(`${basePath}/sw.js`);
+      if (res) {
+        const ready = await navigator.serviceWorker.ready;
+        ready.showNotification("EspeNotes", {
+          body: "La aplicación se ha instalado correctamente",
+          icon: `/src/images/icons/256X256.png`,
+          vibrate: [100, 50, 200],
+        });
       }
-      deferredPrompt = null; // Ya no podemos usar el prompt
-      bannerInstall.style.display = 'none'; // Ocultamos el botón después
-    });
+    } catch (error) {
+      console.error("Service Worker registration failed:", error);
+    }
   }
 
   await cargarRecetas();
@@ -131,7 +131,7 @@ window.addEventListener("load", async () => {
       title: document.querySelector("#title").value,
       description: document.querySelector("#description").value,
       imageUrl: document.querySelector("#imageUrl").value,
-      price: "",  
+      price: "",
       status: "Disponible",
       buttonTheme: "green"
     };

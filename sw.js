@@ -29,5 +29,5 @@ self.addEventListener("sync", (event) => {
 });
 
 self.addEventListener("push", (event) => {
-    console.log("Push notification received",event);
+    console.log("Push notification received", event);
 });

@@ -510,18 +510,18 @@ class HeaderComponent extends LitElement {
         <div class="user-actions">
           <div class="lang-wrapper" @click="${this._toggleLang}">ES ▾
             ${this.showLangMenu
-              ? html`<div class="dropdown">
+        ? html`<div class="dropdown">
                   <ul>
                     <li>Español – ES</li>
                     <li>English – EN</li>
                   </ul>
                 </div>`
-              : ''}
+        : ''}
           </div>
           <div class="acct-wrapper" @click="${this._toggleAccount}">
             Hola, Usuario<br /><strong>Cuenta y Listas</strong> ▾
             ${this.showAccountMenu
-              ? html`<div class="dropdown">
+        ? html`<div class="dropdown">
                   <ul>
                     <li><strong>Tus listas</strong></li>
                     <li>Crear una lista</li>
@@ -534,18 +534,18 @@ class HeaderComponent extends LitElement {
                     <li>Recomendaciones</li>
                   </ul>
                 </div>`
-              : ''}
+        : ''}
           </div>
 
           ${this.showInstallButton
-            ? html`<div
+        ? html`<div
                 class="install-button"
                 @click="${this._handleInstallClick}"
                 title="Instalar la App"
               >
                 Instalar App
               </div>`
-            : ''}
+        : ''}
 
           <espe-boton-carrito></espe-boton-carrito>
         </div>
@@ -560,30 +560,30 @@ class HeaderComponent extends LitElement {
           <a class="mdl-navigation__link" href="">Mis Recetas</a>
           <a class="mdl-navigation__link" href="">Favoritos</a>
           ${this.showInstallButton
-            ? html`<div
+        ? html`<div
                 class="mdl-navigation__link app--install"
                 @click="${this._handleInstallClick}"
               >
                 Instalar App
               </div>`
-            : ''}
+        : ''}
         </nav>
 
         <div class="user-actions drawer-user-actions">
           <div class="lang-wrapper" @click="${this._toggleLangDrawer}">ES ▾
             ${this.showLangMenuDrawer
-              ? html`<div class="dropdown">
+        ? html`<div class="dropdown">
                   <ul>
                     <li>Español – ES</li>
                     <li>English – EN</li>
                   </ul>
                 </div>`
-              : ''}
+        : ''}
           </div>
           <div class="acct-wrapper" @click="${this._toggleAccountDrawer}">
             Hola, Usuario<br /><strong>Cuenta y Listas</strong> ▾
             ${this.showAccountMenuDrawer
-              ? html`<div class="dropdown">
+        ? html`<div class="dropdown">
                   <ul>
                     <li><strong>Tus listas</strong></li>
                     <li>Crear una lista</li>
@@ -596,7 +596,7 @@ class HeaderComponent extends LitElement {
                     <li>Recomendaciones</li>
                   </ul>
                 </div>`
-              : ''}
+        : ''}
           </div>
         </div>
       </nav>

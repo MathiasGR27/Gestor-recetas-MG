@@ -146,8 +146,8 @@ export class EspeFooter extends LitElement {
           <span>© Universidad de las Fuerzas Armadas - ESPE 2025</span>
           <div class="payment-methods">
             ${this.paymentLogos.map(
-              src => html`<img src="${src}" alt="Método de pago" />`
-            )}
+      src => html`<img src="${src}" alt="Método de pago" />`
+    )}
           </div>
         </div>
       </footer>
